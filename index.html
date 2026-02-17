@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoFarm Quest - Sustainable Farming Platform</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Navigation Bar -->
+      <nav class="navbar">
+        <div class="nav-container">
+          <div class="nav-logo">
+            <h1>
+              <a href=""><img src="logo_eco.jpg" alt="Logo" class="logo" /></a>
+              EcoFarm Challenge
+            </h1>
+          </div>
+          <div class="nav-menu" id="navMenu">
+            <a
+              href="#home"
+              class="nav-link active"
+              onclick="showSection('home')"
+              >🏠 <span class="nav-text">Home</span></a
+            >
+
+            <div class="nav-dropdown">
+              <a href="#" class="nav-link dropdown-toggle"
+                >🎮 <span class="nav-text">Activities</span>
+                <span class="dropdown-arrow">▼</span></a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#games" onclick="showSection('games')"
+                    >🎮 Mini Games</a
+                  >
+                </li>
+                <li>
+                  <a href="#challenges" onclick="showSection('challenges')"
+                    >🎯 Daily Challenges</a
+                  >
+                </li>
+                <li>
+                  <a href="#community" onclick="showSection('community')"
+                    >👥 Community</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="nav-dropdown">
+              <a href="#" class="nav-link dropdown-toggle"
+                >🌾 <span class="nav-text">Farming</span>
+                <span class="dropdown-arrow">▼</span></a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#weather" onclick="showSection('weather')"
+                    >🌦️ Weather & Alerts</a
+                  >
+                </li>
+                <li>
+                  <a href="#map" onclick="showSection('map')"
+                    >🗺️ Farm Network</a
+                  >
+                </li>
+                <li>
+                  <a href="#schemes" onclick="showSection('schemes')"
+                    >💰 Gov Schemes</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="nav-dropdown">
+              <a href="#" class="nav-link dropdown-toggle"
+                >⚙️ <span class="nav-text">More</span>
+                <span class="dropdown-arrow">▼</span></a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#help" onclick="showSection('help')"
+                    >❓ Help & Support</a
+                  >
+                </li>
+                <li class="language-item">
+                  <span>🌐 Language:</span>
+                  <select
+                    id="languageSelect"
+                    onchange="changeLanguage(this.value)"
+                    class="language-dropdown"
+                  >
+                    <option value="en">🇬🇧 English</option>
+                    <option value="ml">🇮🇳 മലയാളം</option>
+                    <option value="hi">🇮🇳 हिंदी</option>
+                    <option value="ta">🇮🇳 தமிழ்</option>
+                    <option value="kn">🇮🇳 ಕನ್ನಡ</option>
+                  </select>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="nav-auth">
+            <button class="auth-btn" onclick="showLoginModal()">Login</button>
+            <button class="auth-btn signup" onclick="showSignupModal()">
+              Sign Up
+            </button>
+          </div>
+          <div class="nav-toggle" onclick="toggleNavMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </nav>
+
+      <div class="header">
+        <div class="platform-image">
+          <!-- Game elements -->
+          <text
+            x="20"
+            y="30"
+            font-family="Arial"
+            font-size="14"
+            fill="#2d5016"
+            font-weight="bold"
+          >
+            🎮 Gaming
+          </text>
+          <text
+            x="150"
+            y="30"
+            font-family="Arial"
+            font-size="14"
+            fill="#2d5016"
+            font-weight="bold"
+          >
+            🏆 Rewards
+          </text>
+          <text
+            x="280"
+            y="30"
+            font-family="Arial"
+            font-size="14"
+            fill="#2d5016"
+            font-weight="bold"
+          >
+            🌱 Sustainability
+          </text>
+        </div>
+        <h1>🌱 EcoFarm Challenge 🚜</h1>
+        <p>Government of Kerala | Department of Agriculture</p>
+        <p style="margin-top: 10px; font-size: 1rem">
+          Gamified platform promoting sustainable farming practices across
+          Kerala
+        </p>
+        <br />
+        <!-- <image
+          href="game_icon.png"
+          x="20"
+          y="40"
+          width="800px"
+          height="200px"
+        /> -->
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat-card">
+          <div class="stat-number" id="totalPoints">1,247</div>
+          <div class="stat-label">Total Points</div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 62%"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="level">8</div>
+          <div class="stat-label">Current Level</div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 80%"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="streak">12</div>
+          <div class="stat-label">Day Streak</div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 85%"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="schemePoints">85</div>
+          <div class="stat-label">Scheme Eligibility Score</div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 85%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <div class="challenges-section">
+          <h2 class="section-title">🎯 Daily Challenges</h2>
+
+          <div class="challenge-card">
+            <div class="challenge-title">Coconut Intercropping Mission</div>
+            <div class="challenge-description">
+              Plant pepper vines or nutmeg between coconut palms to maximize
+              land use and income
+            </div>
+            <div class="challenge-reward">
+              <span class="points">+180 XP</span>
+              <button
+                class="challenge-btn"
+                onclick="completeChallenge(this, 180)"
+              >
+                Start Challenge
+              </button>
+            </div>
+          </div>
+
+          <div class="challenge-card">
+            <div class="challenge-title">Banana Mulching Quest</div>
+            <div class="challenge-description">
+              Complete 3 weeks of organic mulching on banana fields using
+              coconut husk
+            </div>
+            <div class="challenge-reward">
+              <span class="points">+150 XP</span>
+              <button
+                class="challenge-btn"
+                onclick="completeChallenge(this, 150)"
+              >
+                Start Challenge
+              </button>
+            </div>
+          </div>
+
+          <div class="challenge-card">
+            <div class="challenge-title">Bio-Pesticide Switch</div>
+            <div class="challenge-description">
+              Replace chemical pesticides with neem-based bio-pesticides for one
+              crop cycle
+            </div>
+            <div class="challenge-reward">
+              <span class="points">+200 XP</span>
+              <button class="challenge-btn completed">✓ Completed</button>
+            </div>
+          </div>
+
+          <div class="challenge-card">
+            <div class="challenge-title">Spice Garden Setup</div>
+            <div class="challenge-description">
+              Create a mixed spice garden with cardamom, black pepper, and
+              ginger
+            </div>
+            <div class="challenge-reward">
+              <span class="points">+220 XP</span>
+              <button
+                class="challenge-btn"
+                onclick="completeChallenge(this, 220)"
+              >
+                Start Challenge
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="achievements-section">
+          <h2 class="section-title">🏆 Achievements</h2>
+
+          <div class="achievement-badge unlocked">
+            <div class="badge-icon">🥥</div>
+            <div class="badge-info">
+              <h4>Coconut Champion</h4>
+              <p>Master intercropping with coconut palms</p>
+            </div>
+          </div>
+
+          <div class="achievement-badge unlocked">
+            <div class="badge-icon">🌿</div>
+            <div class="badge-info">
+              <h4>Organic Pioneer</h4>
+              <p>Switch to bio-pesticides for entire season</p>
+            </div>
+          </div>
+
+          <div class="achievement-badge unlocked">
+            <div class="badge-icon">🍌</div>
+            <div class="badge-info">
+              <h4>Banana Expert</h4>
+              <p>Complete mulching program successfully</p>
+            </div>
+          </div>
+
+          <div class="achievement-badge">
+            <div class="badge-icon">🌶️</div>
+            <div class="badge-info">
+              <h4>Spice Master</h4>
+              <p>Establish profitable spice garden</p>
+            </div>
+          </div>
+
+          <div class="achievement-badge">
+            <div class="badge-icon">🏆</div>
+            <div class="badge-info">
+              <h4>Kerala Krishi Hero</h4>
+              <p>Top performer in your panchayat</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="games-section">
+        <h2 class="section-title">🎮 Farming Mini-Games</h2>
+        <div class="games-grid">
+          <div class="game-card" onclick="startGame('crop-rotation')">
+            <div class="game-icon">🔄</div>
+            <h3>Crop Rotation Puzzle</h3>
+            <p>Plan the perfect 4-season rotation for maximum yield</p>
+            <div class="game-reward">+50 XP per level</div>
+          </div>
+
+          <div class="game-card" onclick="startGame('pest-defense')">
+            <div class="game-icon">🐛</div>
+            <h3>Pest Defense</h3>
+            <p>Protect your crops using organic methods</p>
+            <div class="game-reward">+75 XP per wave</div>
+          </div>
+
+          <div class="game-card" onclick="startGame('water-manager')">
+            <div class="game-icon">💧</div>
+            <h3>Water Manager</h3>
+            <p>Optimize irrigation timing and water usage</p>
+            <div class="game-reward">+60 XP per day</div>
+          </div>
+
+          <div class="game-card" onclick="startGame('market-trader')">
+            <div class="game-icon">📈</div>
+            <h3>Market Trader</h3>
+            <p>Buy low, sell high in the spice market</p>
+            <div class="game-reward">+100 XP profit</div>
+          </div>
+
+          <div class="game-card" onclick="startGame('soil-scientist')">
+            <div class="game-icon">🧪</div>
+            <h3>Soil Science Lab</h3>
+            <p>Test and improve soil health through experiments</p>
+            <div class="game-reward">+80 XP per test</div>
+          </div>
+
+          <div class="game-card" onclick="startGame('weather-predictor')">
+            <div class="game-icon">🌦️</div>
+            <h3>Weather Predictor</h3>
+            <p>Predict monsoon patterns and plan accordingly</p>
+            <div class="game-reward">+90 XP accuracy</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="photos-section">
+        <h2 class="section-title">📸 Farmer Achievement Gallery</h2>
+        <div class="photos-grid" id="photosGrid">
+          <div class="photo-card">
+            <div class="photo-header">
+              <div class="farmer-info">
+                <div class="farmer-avatar">RN</div>
+                <div>
+                  <div class="farmer-name">Ravi Nair</div>
+                  <div class="photo-location">📍 Kottayam, Kerala</div>
+                </div>
+              </div>
+              <div class="photo-time">2 hours ago</div>
+            </div>
+            <div class="photo-image">
+              <div
+                style="
+                  background: linear-gradient(135deg, #4caf50, #8bc34a);
+                  height: 200px;
+                  border-radius: 10px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: white;
+                  font-size: 3rem;
+                "
+              >
+                🌱
+              </div>
+            </div>
+            <div class="photo-description">
+              <strong>Completed Crop Rotation Challenge!</strong><br />
+              Successfully implemented 4-season rotation plan with rice,
+              vegetables, legumes, and fallow period. Soil health improved
+              significantly!
+            </div>
+            <div class="photo-actions">
+              <button class="rate-btn" onclick="ratePhoto(this, 'like')">
+                <span class="rate-icon">👍</span>
+                <span class="rate-count">24</span>
+              </button>
+              <button class="rate-btn" onclick="ratePhoto(this, 'love')">
+                <span class="rate-icon">❤️</span>
+                <span class="rate-count">12</span>
+              </button>
+              <button class="rate-btn" onclick="ratePhoto(this, 'expert')">
+                <span class="rate-icon">🏆</span>
+                <span class="rate-count">8</span>
+              </button>
+              <button class="comment-btn" onclick="toggleComments(this)">
+                💬 Comments (5)
+              </button>
+            </div>
+            <div class="comments-section" style="display: none">
+              <div class="comment">
+                <strong>Suma K:</strong> Great work! I'll try this rotation too.
+              </div>
+              <div class="comment">
+                <strong>Anil M:</strong> Which legumes worked best for you?
+              </div>
+              <div class="comment-input">
+                <input
+                  type="text"
+                  placeholder="Add a comment..."
+                  onkeypress="addComment(event, this)"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="photo-card">
+            <div class="photo-header">
+              <div class="farmer-info">
+                <div class="farmer-avatar">SK</div>
+                <div>
+                  <div class="farmer-name">Suma Krishnan</div>
+                  <div class="photo-location">📍 Thrissur, Kerala</div>
+                </div>
+              </div>
+              <div class="photo-time">5 hours ago</div>
+            </div>
+            <div class="photo-image">
+              <div
+                style="
+                  background: linear-gradient(135deg, #ff9800, #f57c00);
+                  height: 200px;
+                  border-radius: 10px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: white;
+                  font-size: 3rem;
+                "
+              >
+                🐛
+              </div>
+            </div>
+            <div class="photo-description">
+              <strong>Pest Defense Victory!</strong><br />
+              Used neem spray and companion planting to protect my vegetable
+              garden. 90% pest reduction without chemicals!
+            </div>
+            <div class="photo-actions">
+              <button class="rate-btn" onclick="ratePhoto(this, 'like')">
+                <span class="rate-icon">👍</span>
+                <span class="rate-count">18</span>
+              </button>
+              <button class="rate-btn" onclick="ratePhoto(this, 'love')">
+                <span class="rate-icon">❤️</span>
+                <span class="rate-count">9</span>
+              </button>
+              <button class="rate-btn" onclick="ratePhoto(this, 'expert')">
+                <span class="rate-icon">🏆</span>
+                <span class="rate-count">6</span>
+              </button>
+              <button class="comment-btn" onclick="toggleComments(this)">
+                💬 Comments (3)
+              </button>
+            </div>
+            <div class="comments-section" style="display: none">
+              <div class="comment">
+                <strong>Ravi N:</strong> Excellent organic approach!
+              </div>
+              <div class="comment">
+                <strong>Priya V:</strong> Which companion plants did you use?
+              </div>
+              <div class="comment-input">
+                <input
+                  type="text"
+                  placeholder="Add a comment..."
+                  onkeypress="addComment(event, this)"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="photo-card">
+            <div class="photo-header">
+              <div class="farmer-info">
+                <div class="farmer-avatar">AM</div>
+                <div>
+                  <div class="farmer-name">Anil Menon</div>
+                  <div class="photo-location">📍 Ernakulam, Kerala</div>
+                </div>
+              </div>
+              <div class="photo-time">1 day ago</div>
+            </div>
+            <div class="photo-image">
+              <div
+                style="
+                  background: linear-gradient(135deg, #2196f3, #1976d2);
+                  height: 200px;
+                  border-radius: 10px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: white;
+                  font-size: 3rem;
+                "
+              >
+                💧
+              </div>
+            </div>
+            <div class="photo-description">
+              <strong>Water Management Success!</strong><br />
+              Optimized irrigation schedule and reduced water usage by 30% while
+              maintaining crop yield. Early morning watering works best!
+            </div>
+            <div class="photo-actions">
+              <button class="rate-btn" onclick="ratePhoto(this, 'like')">
+                <span class="rate-icon">👍</span>
+                <span class="rate-count">31</span>
+              </button>
+              <button class="rate-btn" onclick="ratePhoto(this, 'love')">
+                <span class="rate-icon">❤️</span>
+                <span class="rate-count">15</span>
+              </button>
+              <button class="rate-btn" onclick="ratePhoto(this, 'expert')">
+                <span class="rate-icon">🏆</span>
+                <span class="rate-count">11</span>
+              </button>
+              <button class="comment-btn" onclick="toggleComments(this)">
+                💬 Comments (7)
+              </button>
+            </div>
+            <div class="comments-section" style="display: none">
+              <div class="comment">
+                <strong>Suma K:</strong> Amazing water savings!
+              </div>
+              <div class="comment">
+                <strong>Ravi N:</strong> What time do you start irrigation?
+              </div>
+              <div class="comment-input">
+                <input
+                  type="text"
+                  placeholder="Add a comment..."
+                  onkeypress="addComment(event, this)"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weather-Based Crop Recommendations -->
+      <div class="crop-recommendations">
+        <h2 class="section-title">🌦️ Weather-Based Crop Recommendations</h2>
+        <div class="weather-crop-grid">
+          <div class="weather-crop-card monsoon">
+            <div class="weather-header">
+              <h3>🌧️ Monsoon Season (June-September)</h3>
+              <div class="weather-conditions">
+                Heavy rainfall, High humidity, 24-30°C
+              </div>
+            </div>
+            <div class="recommended-crops">
+              <h4>Recommended Crops:</h4>
+              <div class="crop-list">
+                <div class="crop-item">
+                  <span class="crop-icon">🌾</span>
+                  <div class="crop-info">
+                    <strong>Rice (Paddy)</strong>
+                    <p>
+                      Perfect for waterlogged conditions. High yield potential.
+                    </p>
+                    <small>Planting: June | Harvest: October</small>
+                  </div>
+                </div>
+                <div class="crop-item">
+                  <span class="crop-icon">🥬</span>
+                  <div class="crop-info">
+                    <strong>Leafy Vegetables</strong>
+                    <p>Spinach, amaranth thrive in monsoon humidity.</p>
+                    <small>Quick growth: 30-45 days</small>
+                  </div>
+                </div>
+                <div class="crop-item">
+                  <span class="crop-icon">🌶️</span>
+                  <div class="crop-info">
+                    <strong>Ginger & Turmeric</strong>
+                    <p>Excellent monsoon crops with high market value.</p>
+                    <small>Plant: June | Harvest: December</small>
+                  </div>
+                </div>
+              </div>
+              <div class="farming-tips">
+                <strong>💡 Monsoon Tips:</strong>
+                <ul>
+                  <li>Ensure proper drainage to prevent waterlogging</li>
+                  <li>Use organic fungicides to prevent diseases</li>
+                  <li>Plant on raised beds for better water management</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="weather-crop-card post-monsoon">
+            <div class="weather-header">
+              <h3>🌤️ Post-Monsoon (October-December)</h3>
+              <div class="weather-conditions">
+                Moderate rainfall, Pleasant weather, 22-28°C
+              </div>
+            </div>
+            <div class="recommended-crops">
+              <h4>Recommended Crops:</h4>
+              <div class="crop-list">
+                <div class="crop-item">
+                  <span class="crop-icon">🥕</span>
+                  <div class="crop-info">
+                    <strong>Root Vegetables</strong>
+                    <p>Carrots, radish, beetroot grow well in cool weather.</p>
+                    <small>Planting: October | Harvest: January</small>
+                  </div>
+                </div>
+                <div class="crop-item">
+                  <span class="crop-icon">🌱</span>
+                  <div class="crop-info">
+                    <strong>Legumes</strong>
+                    <p>Cowpea, green gram improve soil nitrogen.</p>
+                    <small>Nitrogen fixation + income</small>
+                  </div>
+                </div>
+                <div class="crop-item">
+                  <span class="crop-icon">🥥</span>
+                  <div class="crop-info">
+                    <strong>Coconut Intercropping</strong>
+                    <p>Plant pepper vines, nutmeg between coconut palms.</p>
+                    <small>Maximize land utilization</small>
+                  </div>
+                </div>
+              </div>
+              <div class="farming-tips">
+                <strong>💡 Post-Monsoon Tips:</strong>
+                <ul>
+                  <li>Perfect time for transplanting seedlings</li>
+                  <li>Ideal conditions for organic farming practices</li>
+                  <li>Good time to establish perennial crops</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="weather-crop-card winter">
+            <div class="weather-header">
+              <h3>❄️ Winter Season (December-February)</h3>
+              <div class="weather-conditions">
+                Dry weather, Cool temperatures, 18-25°C
+              </div>
+            </div>
+            <div class="recommended-crops">
+              <h4>Recommended Crops:</h4>
+              <div class="crop-list">
+                <div class="crop-item">
+                  <span class="crop-icon">🍅</span>
+                  <div class="crop-info">
+                    <strong>Tomatoes & Capsicum</strong>
+                    <p>Cool weather prevents pest attacks, better quality.</p>
+                    <small>High market prices in winter</small>
+                  </div>
+                </div>
+                <div class="crop-item">
+                  <span class="crop-icon">🥒</span>
+                  <div class="crop-info">
+                    <strong>Cucumber & Bottle Gourd</strong>
+                    <p>Excellent growth in cool, dry conditions.</p>
+                    <small>Planting: December | Harvest: March</small>
+                  </div>
+                </div>
+                <div class="crop-item">
+                  <span class="crop-icon">🌿</span>
+                  <div class="crop-info">
+                    <strong>Herbs & Spices</strong>
+                    <p>Coriander, fenugreek, mint grow excellently.</p>
+                    <small>High value, low water requirement</small>
+                  </div>
+                </div>
+              </div>
+              <div class="farming-tips">
+                <strong>💡 Winter Tips:</strong>
+                <ul>
+                  <li>Implement drip irrigation for water conservation</li>
+                  <li>Use mulching to retain soil moisture</li>
+                  <li>Perfect time for soil preparation and composting</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="weather-crop-card summer">
+            <div class="weather-header">
+              <h3>☀️ Summer Season (March-May)</h3>
+              <div class="weather-conditions">
+                Hot & dry, Low humidity, 28-35°C
+              </div>
+            </div>
+            <div class="recommended-crops">
+              <h4>Recommended Crops:</h4>
+              <div class="crop-list">
+                <div class="crop-item">
+                  <span class="crop-icon">🍉</span>
+                  <div class="crop-info">
+                    <strong>Watermelon & Muskmelon</strong>
+                    <p>Heat-loving crops with high water content.</p>
+                    <small>Excellent summer income source</small>
+                  </div>
+                </div>
+                <div class="crop-item">
+                  <span class="crop-icon">🌻</span>
+                  <div class="crop-info">
+                    <strong>Sunflower</strong>
+                    <p>Drought-resistant oilseed crop.</p>
+                    <small>Oil production + cattle feed</small>
+                  </div>
+                </div>
+                <div class="crop-item">
+                  <span class="crop-icon">🥭</span>
+                  <div class="crop-info">
+                    <strong>Mango Orchard Care</strong>
+                    <p>Summer is harvest time for mangoes.</p>
+                    <small>Pruning and maintenance season</small>
+                  </div>
+                </div>
+              </div>
+              <div class="farming-tips">
+                <strong>💡 Summer Tips:</strong>
+                <ul>
+                  <li>Focus on water conservation techniques</li>
+                  <li>Use shade nets for sensitive crops</li>
+                  <li>Early morning irrigation to reduce evaporation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="leaderboard">
+        <h2 class="section-title">🏆 Panchayat Leaderboard - Kottayam</h2>
+
+        <div class="leaderboard-item">
+          <div class="rank">#1</div>
+          <div class="user-info">
+            <div class="user-avatar">RN</div>
+            <span>Ravi Nair</span>
+          </div>
+          <div class="user-score">4,247 XP</div>
+        </div>
+
+        <div class="leaderboard-item">
+          <div class="rank">#2</div>
+          <div class="user-info">
+            <div class="user-avatar">SK</div>
+            <span>Suma Krishnan</span>
+          </div>
+          <div class="user-score">3,891 XP</div>
+        </div>
+
+        <div class="leaderboard-item current-user">
+          <div class="rank">#3</div>
+          <div class="user-info">
+            <div class="user-avatar">YU</div>
+            <span>You</span>
+          </div>
+          <div class="user-score">3,247 XP</div>
+        </div>
+
+        <div class="leaderboard-item">
+          <div class="rank">#4</div>
+          <div class="user-info">
+            <div class="user-avatar">AM</div>
+            <span>Anil Menon</span>
+          </div>
+          <div class="user-score">2,856 XP</div>
+        </div>
+
+        <div class="leaderboard-item">
+          <div class="rank">#5</div>
+          <div class="user-info">
+            <div class="user-avatar">PV</div>
+            <span>Priya Varma</span>
+          </div>
+          <div class="user-score">2,423 XP</div>
+        </div>
+      </div>
+
+      <!-- Farm Map Section -->
+      <div class="map-section" id="mapSection" style="display: none">
+        <h2 class="section-title">🗺️ Kerala Farm Network</h2>
+        <div class="map-container">
+          <div class="map-header">
+            <div class="location-info">
+              <h3>📍 Your Farm Location</h3>
+              <p>Kottayam District, Kerala</p>
+              <button class="location-btn" onclick="updateLocation()">
+                📍 Update Location
+              </button>
+            </div>
+            <div class="map-filters">
+              <button class="filter-btn active" onclick="filterMap('all')">
+                All Farmers
+              </button>
+              <button class="filter-btn" onclick="filterMap('coconut')">
+                🥥 Coconut
+              </button>
+              <button class="filter-btn" onclick="filterMap('spices')">
+                🌶️ Spices
+              </button>
+              <button class="filter-btn" onclick="filterMap('banana')">
+                🍌 Banana
+              </button>
+            </div>
+          </div>
+
+          <div class="interactive-map">
+            <svg viewBox="0 0 800 600" class="kerala-map">
+              <!-- Kerala state outline -->
+              <path
+                d="M100 100 L700 100 L700 500 L100 500 Z"
+                fill="#e8f5e8"
+                stroke="#4CAF50"
+                stroke-width="2"
+              />
+
+              <!-- Districts -->
+              <g class="districts">
+                <circle
+                  cx="200"
+                  cy="150"
+                  r="8"
+                  fill="#FF5722"
+                  class="farm-marker"
+                  data-farmer="Ravi Nair"
+                  data-crop="coconut"
+                  data-location="Thiruvananthapuram"
+                  onclick="showFarmerInfo(this)"
+                />
+                <circle
+                  cx="350"
+                  cy="200"
+                  r="8"
+                  fill="#4CAF50"
+                  class="farm-marker"
+                  data-farmer="Suma Krishnan"
+                  data-crop="spices"
+                  data-location="Kottayam"
+                  onclick="showFarmerInfo(this)"
+                />
+                <circle
+                  cx="500"
+                  cy="180"
+                  r="8"
+                  fill="#FF9800"
+                  class="farm-marker"
+                  data-farmer="Anil Menon"
+                  data-crop="banana"
+                  data-location="Ernakulam"
+                  onclick="showFarmerInfo(this)"
+                />
+                <circle
+                  cx="300"
+                  cy="300"
+                  r="8"
+                  fill="#9C27B0"
+                  class="farm-marker"
+                  data-farmer="Priya Varma"
+                  data-crop="rubber"
+                  data-location="Thrissur"
+                  onclick="showFarmerInfo(this)"
+                />
+                <circle
+                  cx="450"
+                  cy="350"
+                  r="10"
+                  fill="#2196F3"
+                  class="farm-marker current-user"
+                  data-farmer="You"
+                  data-crop="coconut"
+                  data-location="Kottayam"
+                  onclick="showFarmerInfo(this)"
+                />
+                <circle
+                  cx="250"
+                  cy="400"
+                  r="8"
+                  fill="#795548"
+                  class="farm-marker"
+                  data-farmer="Rajesh Kumar"
+                  data-crop="rice"
+                  data-location="Alappuzha"
+                  onclick="showFarmerInfo(this)"
+                />
+              </g>
+
+              <!-- District labels -->
+              <text
+                x="200"
+                y="140"
+                text-anchor="middle"
+                font-size="12"
+                fill="#333"
+              >
+                TVM
+              </text>
+              <text
+                x="350"
+                y="190"
+                text-anchor="middle"
+                font-size="12"
+                fill="#333"
+              >
+                KTM
+              </text>
+              <text
+                x="500"
+                y="170"
+                text-anchor="middle"
+                font-size="12"
+                fill="#333"
+              >
+                EKM
+              </text>
+              <text
+                x="300"
+                y="290"
+                text-anchor="middle"
+                font-size="12"
+                fill="#333"
+              >
+                TSR
+              </text>
+              <text
+                x="250"
+                y="390"
+                text-anchor="middle"
+                font-size="12"
+                fill="#333"
+              >
+                ALP
+              </text>
+            </svg>
+          </div>
+
+          <div class="map-legend">
+            <h4>Legend:</h4>
+            <div class="legend-items">
+              <div class="legend-item">
+                <div class="legend-color" style="background: #ff5722"></div>
+                <span>Coconut Farms</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color" style="background: #4caf50"></div>
+                <span>Spice Gardens</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color" style="background: #ff9800"></div>
+                <span>Banana Plantations</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color" style="background: #2196f3"></div>
+                <span>Your Farm</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="farmer-info-panel"
+          id="farmerInfoPanel"
+          style="display: none"
+        >
+          <div class="info-content">
+            <button class="close-info" onclick="closeFarmerInfo()">
+              &times;
+            </button>
+            <div id="farmerDetails"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weather Section -->
+      <div class="weather-section" id="weatherSection" style="display: none">
+        <h2 class="section-title">🌦️ Kerala Weather & Farming Alerts</h2>
+        <div class="weather-grid">
+          <div class="current-weather">
+            <h3>Current Weather - Kottayam</h3>
+            <div class="weather-display">
+              <div class="weather-icon">⛅</div>
+              <div class="weather-details">
+                <div class="temperature">28°C</div>
+                <div class="condition">Partly Cloudy</div>
+                <div class="humidity">Humidity: 75%</div>
+                <div class="wind">Wind: 12 km/h SW</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="weather-forecast">
+            <h3>5-Day Forecast</h3>
+            <div class="forecast-days">
+              <div class="forecast-day">
+                <div class="day">Today</div>
+                <div class="weather-icon">🌧️</div>
+                <div class="temp">26°/32°</div>
+              </div>
+              <div class="forecast-day">
+                <div class="day">Tomorrow</div>
+                <div class="weather-icon">⛈️</div>
+                <div class="temp">24°/29°</div>
+              </div>
+              <div class="forecast-day">
+                <div class="day">Wed</div>
+                <div class="weather-icon">🌦️</div>
+                <div class="temp">25°/30°</div>
+              </div>
+              <div class="forecast-day">
+                <div class="day">Thu</div>
+                <div class="weather-icon">☀️</div>
+                <div class="temp">27°/33°</div>
+              </div>
+              <div class="forecast-day">
+                <div class="day">Fri</div>
+                <div class="weather-icon">⛅</div>
+                <div class="temp">26°/31°</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="farming-alerts">
+          <h3>🚨 Farming Alerts & Recommendations</h3>
+          <div class="alerts-grid">
+            <div class="alert-card high">
+              <div class="alert-icon">⚠️</div>
+              <div class="alert-content">
+                <h4>Heavy Rain Alert</h4>
+                <p>
+                  Expected heavy rainfall in next 48 hours. Ensure proper
+                  drainage in coconut groves.
+                </p>
+                <small>Valid until: Tomorrow 6 PM</small>
+              </div>
+            </div>
+
+            <div class="alert-card medium">
+              <div class="alert-icon">💧</div>
+              <div class="alert-content">
+                <h4>Irrigation Recommendation</h4>
+                <p>
+                  Reduce watering for next 3 days due to expected rainfall. Save
+                  water and prevent root rot.
+                </p>
+                <small>For: All crops</small>
+              </div>
+            </div>
+
+            <div class="alert-card low">
+              <div class="alert-icon">🌱</div>
+              <div class="alert-content">
+                <h4>Planting Window</h4>
+                <p>
+                  Good time to plant pepper saplings after the rain. Soil
+                  moisture will be optimal.
+                </p>
+                <small>Recommended: This weekend</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Government Schemes Section -->
+      <div class="schemes-section" id="schemesSection" style="display: none">
+        <h2 class="section-title">💰 Government Schemes & Subsidies</h2>
+        <div class="schemes-grid">
+          <div class="scheme-card">
+            <div class="scheme-header">
+              <h3>🥥 Coconut Development Board Scheme</h3>
+              <div class="eligibility-badge eligible">Eligible</div>
+            </div>
+            <div class="scheme-details">
+              <p><strong>Subsidy:</strong> Up to ₹40,000 per hectare</p>
+              <p>
+                <strong>Purpose:</strong> Coconut plantation development and
+                intercropping
+              </p>
+              <p><strong>Your Score:</strong> 85/100 (Eligible)</p>
+              <div class="scheme-benefits">
+                <div class="benefit">✓ 75% subsidy on saplings</div>
+                <div class="benefit">✓ Drip irrigation support</div>
+                <div class="benefit">✓ Technical guidance</div>
+              </div>
+              <button class="apply-btn" onclick="applyScheme('coconut')">
+                Apply Now
+              </button>
+            </div>
+          </div>
+
+          <div class="scheme-card">
+            <div class="scheme-header">
+              <h3>🌿 Organic Farming Promotion</h3>
+              <div class="eligibility-badge eligible">Eligible</div>
+            </div>
+            <div class="scheme-details">
+              <p><strong>Subsidy:</strong> Up to ₹25,000 per hectare</p>
+              <p>
+                <strong>Purpose:</strong> Transition to organic farming methods
+              </p>
+              <p><strong>Your Score:</strong> 92/100 (Highly Eligible)</p>
+              <div class="scheme-benefits">
+                <div class="benefit">✓ Organic inputs subsidy</div>
+                <div class="benefit">✓ Certification support</div>
+                <div class="benefit">✓ Market linkage</div>
+              </div>
+              <button class="apply-btn" onclick="applyScheme('organic')">
+                Apply Now
+              </button>
+            </div>
+          </div>
+
+          <div class="scheme-card">
+            <div class="scheme-header">
+              <h3>💧 Micro Irrigation Scheme</h3>
+              <div class="eligibility-badge not-eligible">
+                Need 15 more points
+              </div>
+            </div>
+            <div class="scheme-details">
+              <p><strong>Subsidy:</strong> Up to ₹1,00,000</p>
+              <p>
+                <strong>Purpose:</strong> Drip and sprinkler irrigation systems
+              </p>
+              <p><strong>Your Score:</strong> 70/100 (Need improvement)</p>
+              <div class="scheme-requirements">
+                <div class="requirement">
+                  • Complete water management challenges
+                </div>
+                <div class="requirement">• Maintain 30-day farming streak</div>
+                <div class="requirement">• Share 5 achievement photos</div>
+              </div>
+              <button class="apply-btn disabled" disabled>
+                Improve Score First
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Help Section -->
+      <div class="help-section" id="helpSection" style="display: none">
+        <h2 class="section-title">❓ Help & Support</h2>
+        <div class="help-grid">
+          <div class="help-category">
+            <h3>📞 Emergency Helplines</h3>
+            <div class="helpline-list">
+              <div class="helpline-item">
+                <div class="helpline-icon">🚨</div>
+                <div class="helpline-info">
+                  <h4>Krishi Vigyan Kendra</h4>
+                  <p>Technical farming support</p>
+                  <a href="tel:+914812345678" class="helpline-number"
+                    >📞 0481-234-5678</a
+                  >
+                </div>
+              </div>
+
+              <div class="helpline-item">
+                <div class="helpline-icon">🌾</div>
+                <div class="helpline-info">
+                  <h4>Agriculture Department</h4>
+                  <p>Scheme information & support</p>
+                  <a href="tel:+914812345679" class="helpline-number"
+                    >📞 0481-234-5679</a
+                  >
+                </div>
+              </div>
+
+              <div class="helpline-item">
+                <div class="helpline-icon">🌦️</div>
+                <div class="helpline-info">
+                  <h4>Weather Emergency</h4>
+                  <p>Disaster management & alerts</p>
+                  <a href="tel:108" class="helpline-number"
+                    >📞 108 (Emergency)</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="help-category">
+            <h3>💬 Contact Support</h3>
+            <div class="contact-options">
+              <button class="contact-btn" onclick="openChat()">
+                💬 Live Chat Support
+                <small>Available 9 AM - 6 PM</small>
+              </button>
+
+              <button class="contact-btn" onclick="sendEmail()">
+                📧 Email Support
+                <small>support@keralakrishiquest.gov.in</small>
+              </button>
+
+              <button class="contact-btn" onclick="requestCallback()">
+                📞 Request Callback
+                <small>We'll call you back within 2 hours</small>
+              </button>
+            </div>
+          </div>
+
+          <div class="help-category">
+            <h3>📚 Frequently Asked Questions</h3>
+            <div class="faq-list">
+              <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">
+                  <span>How do I earn more XP points?</span>
+                  <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                  Complete daily challenges, play farming games, share
+                  achievement photos, and maintain your farming streak. Each
+                  activity gives different XP rewards.
+                </div>
+              </div>
+
+              <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">
+                  <span>How do government scheme eligibility scores work?</span>
+                  <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                  Your eligibility score is based on your farming activities, XP
+                  points, completed challenges, and real-world implementation of
+                  sustainable practices. Higher scores unlock more schemes.
+                </div>
+              </div>
+
+              <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">
+                  <span>Can I connect with other farmers in my area?</span>
+                  <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                  Yes! Use the Farm Map to find nearby farmers, comment on their
+                  achievement photos, and participate in panchayat-level
+                  competitions and discussions.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>🌱 Kerala Krishi Quest</h3>
+          <p>
+            Empowering Kerala farmers through gamified sustainable agriculture
+            practices.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="social-link">📘 Facebook</a>
+            <a href="#" class="social-link">🐦 Twitter</a>
+            <a href="#" class="social-link">📸 Instagram</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#home" onclick="showSection('home')">Home</a></li>
+            <li><a href="#games" onclick="showSection('games')">Games</a></li>
+            <li>
+              <a href="#schemes" onclick="showSection('schemes')"
+                >Government Schemes</a
+              >
+            </li>
+            <li>
+              <a href="#weather" onclick="showSection('weather')"
+                >Weather Alerts</a
+              >
+            </li>
+            <li>
+              <a href="#help" onclick="showSection('help')">Help & Support</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>📞 Emergency Helplines</h4>
+          <div class="emergency-contacts">
+            <div class="emergency-item">
+              <strong>Krishi Vigyan Kendra:</strong>
+              <a href="tel:+914812345678">0481-234-5678</a>
+            </div>
+            <div class="emergency-item">
+              <strong>Agriculture Dept:</strong>
+              <a href="tel:+914812345679">0481-234-5679</a>
+            </div>
+            <div class="emergency-item">
+              <strong>Emergency:</strong>
+              <a href="tel:108" class="emergency-number">108</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>📧 Contact Information</h4>
+          <div class="contact-info">
+            <div class="contact-item">
+              <strong>Email:</strong>
+              <a href="mailto:support@keralakrishiquest.gov.in"
+                >support@keralakrishiquest.gov.in</a
+              >
+            </div>
+            <div class="contact-item">
+              <strong>Address:</strong>
+              <p>
+                Department of Agriculture<br />
+                Government of Kerala<br />
+                Thiruvananthapuram - 695001
+              </p>
+            </div>
+            <div class="contact-item">
+              <strong>Office Hours:</strong>
+              <p>
+                Monday - Friday: 9:00 AM - 6:00 PM<br />
+                Saturday: 9:00 AM - 1:00 PM
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-container">
+          <div class="footer-bottom-content">
+            <p>
+              &copy; 2024 Government of Kerala - Department of Agriculture. All
+              rights reserved.
+            </p>
+            <div class="footer-bottom-links">
+              <a href="#privacy">Privacy Policy</a>
+              <a href="#terms">Terms of Service</a>
+              <a href="#accessibility">Accessibility</a>
+              <a href="#sitemap">Site Map</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+      <div class="modal">
+        <button class="modal-close" onclick="closeModal('loginModal')">
+          &times;
+        </button>
+        <h2>🌱 Welcome Back!</h2>
+        <form onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" required />
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" required />
+          </div>
+          <button type="submit" class="modal-btn">Login</button>
+        </form>
+        <div class="modal-link">
+          Don't have an account?
+          <a href="#" onclick="switchToSignup()">Sign up here</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Modal -->
+    <div class="modal-overlay" id="gameModal">
+      <div class="modal" style="max-width: 600px">
+        <button class="modal-close" onclick="closeModal('gameModal')">
+          &times;
+        </button>
+        <div id="gameContent">
+          <!-- Game content will be loaded here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo Upload Modal -->
+    <div class="modal-overlay" id="photoModal">
+      <div class="modal" style="max-width: 500px">
+        <button class="modal-close" onclick="closeModal('photoModal')">
+          &times;
+        </button>
+        <h2>📸 Share Your Achievement!</h2>
+        <form onsubmit="submitPhoto(event)">
+          <div class="form-group">
+            <label for="photoUpload">Upload Photo</label>
+            <div
+              class="photo-upload-area"
+              onclick="document.getElementById('photoUpload').click()"
+            >
+              <div id="photoPreview">
+                <div style="font-size: 3rem; color: #ccc">📷</div>
+                <p>Click to upload a photo of your farming achievement</p>
+              </div>
+              <input
+                type="file"
+                id="photoUpload"
+                accept="image/*"
+                style="display: none"
+                onchange="previewPhoto(this)"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="achievementTitle">Achievement Title</label>
+            <input
+              type="text"
+              id="achievementTitle"
+              placeholder="e.g., Completed Crop Rotation Challenge!"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="photoLocation">Location</label>
+            <input
+              type="text"
+              id="photoLocation"
+              placeholder="e.g., Kottayam, Kerala"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="photoDescription">Description</label>
+            <textarea
+              id="photoDescription"
+              rows="4"
+              placeholder="Describe your achievement, methods used, and results..."
+              required
+              style="
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #e0e0e0;
+                border-radius: 10px;
+                font-size: 1rem;
+                resize: vertical;
+              "
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="gameCompleted">Game Completed</label>
+            <select
+              id="gameCompleted"
+              style="
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #e0e0e0;
+                border-radius: 10px;
+                font-size: 1rem;
+              "
+            >
+              <option value="">Select the game you completed</option>
+              <option value="crop-rotation">🔄 Crop Rotation Puzzle</option>
+              <option value="pest-defense">🐛 Pest Defense</option>
+              <option value="water-manager">💧 Water Manager</option>
+              <option value="market-trader">📈 Market Trader</option>
+              <option value="soil-scientist">🧪 Soil Science Lab</option>
+              <option value="weather-predictor">🌦️ Weather Predictor</option>
+            </select>
+          </div>
+          <button type="submit" class="modal-btn">Share Achievement</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal-overlay" id="signupModal">
+      <div class="modal">
+        <button class="modal-close" onclick="closeModal('signupModal')">
+          &times;
+        </button>
+        <h2>🚜 Join EcoFarm Quest!</h2>
+        <form onsubmit="handleSignup(event)">
+          <div class="form-group">
+            <label for="signupName">Full Name</label>
+            <input type="text" id="signupName" required />
+          </div>
+          <div class="form-group">
+            <label for="signupEmail">Email</label>
+            <input type="email" id="signupEmail" required />
+          </div>
+          <div class="form-group">
+            <label for="signupPassword">Password</label>
+            <input type="password" id="signupPassword" required minlength="6" />
+          </div>
+          <div class="form-group">
+            <label for="farmType">Primary Crop</label>
+            <select
+              id="farmType"
+              style="
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #e0e0e0;
+                border-radius: 10px;
+                font-size: 1rem;
+              "
+            >
+              <option value="">Select your primary crop</option>
+              <option value="coconut">Coconut</option>
+              <option value="banana">Banana</option>
+              <option value="spices">Spices (Pepper, Cardamom)</option>
+              <option value="rubber">Rubber</option>
+              <option value="rice">Rice</option>
+              <option value="vegetables">Vegetables</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="panchayat">Panchayat</label>
+            <select
+              id="panchayat"
+              style="
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #e0e0e0;
+                border-radius: 10px;
+                font-size: 1rem;
+              "
+            >
+              <option value="">Select your panchayat</option>
+              <option value="kottayam">Kottayam</option>
+              <option value="ernakulam">Ernakulam</option>
+              <option value="thrissur">Thrissur</option>
+              <option value="kozhikode">Kozhikode</option>
+              <option value="thiruvananthapuram">Thiruvananthapuram</option>
+            </select>
+          </div>
+          <button type="submit" class="modal-btn">Create Account</button>
+        </form>
+        <div class="modal-link">
+          Already have an account?
+          <a href="#" onclick="switchToLogin()">Login here</a>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="app.js" defer></script>
+</html>
